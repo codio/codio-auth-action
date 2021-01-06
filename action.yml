@@ -15,7 +15,7 @@ inputs:
     required: false
     default: 'codio.com'
 outputs:
-  token: # id of output
+  token:
     description: 'Authentication token'
 runs:
   using: 'node12'
