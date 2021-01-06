@@ -1,0 +1,22 @@
+# action.yml
+name: 'Codio API Authenticaion'
+description: 'Authenticate for Codio API calls'
+inputs:
+  client-id:
+    description: 'Client ID'
+    required: true
+    default: ''
+  secret-id:
+    description: 'Secret ID'
+    required: true
+    default: ''
+  apiUri:
+    description: 'Api Domain'
+    required: false
+    default: 'codio.com'
+outputs:
+  token: # id of output
+    description: 'Authentication token'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
