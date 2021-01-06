@@ -10,7 +10,7 @@ inputs:
     description: 'Secret ID'
     required: true
     default: ''
-  apiUri:
+  domain:
     description: 'Api Domain'
     required: false
     default: 'codio.com'
