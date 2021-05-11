@@ -75,7 +75,7 @@ function publishArchive(courseId, assignmentId, archivePath, changelog) {
             const token = config_1.default.getToken();
             const domain = config_1.default.getDomain();
             const authHeaders = {
-                'Authorization': 'Bearer ' + token
+                'Authorization': `Bearer ${token}`
             };
             const api = bent_1.default(`https://octopus.${domain}`, 'POST', 'json', 200);
             const postData = new form_data_1.default();
@@ -103,8 +103,9 @@ function publishArchive(courseId, assignmentId, archivePath, changelog) {
         }
         catch (error) {
             if (error.json) {
-                console.log(yield error.json());
+                error = new Error(yield error.json());
             }
+            throw error;
         }
     });
 }
@@ -120,7 +121,7 @@ function validityState(ymls) {
 function loadYaml(yamlDir) {
     return __awaiter(this, void 0, void 0, function* () {
         let res = [];
-        const files = yield glob_promise_1.default('*.y?ml', { cwd: yamlDir });
+        const files = yield glob_promise_1.default('*.y?ml', { cwd: yamlDir, nodir: true });
         console.log(files);
         for (var file of files) {
             const ymlText = yield fs_1.default.promises.readFile(path_1.default.join(yamlDir, file), { encoding: 'utf-8' });
