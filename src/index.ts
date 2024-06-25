@@ -1,4 +1,3 @@
-import querystring from 'querystring'
 import * as core from '@actions/core'
 import codio from 'codio-api-js'
 
@@ -14,7 +13,7 @@ const main = async () => {
     core.setSecret('token')
     core.setOutput('token', token)
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed((error as Error).message)
   }
 }
 
